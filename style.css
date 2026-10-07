@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notes Sharing Platform</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Mini Project</p>
+          <h1>Notes Sharing Platform</h1>
+        </div>
+        <button id="themeToggle" class="ghost-btn" aria-label="Toggle theme">🌙</button>
+      </header>
+
+      <main class="layout">
+        <section class="panel compose-panel">
+          <h2>Create Note</h2>
+
+          <form id="noteForm">
+            <input id="noteTitle" type="text" placeholder="Note title" maxlength="80" required />
+            <textarea id="noteContent" rows="6" placeholder="Write your note here..." required></textarea>
+
+            <div class="row">
+              <label for="noteVisibility">Visibility</label>
+              <select id="noteVisibility">
+                <option value="private">Private</option>
+                <option value="public">Public</option>
+              </select>
+            </div>
+
+            <div class="row">
+              <label for="noteTags">Tags</label>
+              <input id="noteTags" type="text" placeholder="e.g. study, react, notes" />
+            </div>
+
+            <button type="submit" class="primary-btn">Save Note</button>
+          </form>
+        </section>
+
+        <aside class="panel sidebar-panel">
+          <h2>Shared Note</h2>
+          <div class="share-box">
+            <input id="shareCodeInput" type="text" placeholder="Enter share code" />
+            <button id="openShareBtn" class="secondary-btn">Open</button>
+          </div>
+
+          <div id="sharedNoteCard" class="shared-note hidden"></div>
+        </aside>
+      </main>
+
+      <section class="panel section-panel">
+        <div class="section-header">
+          <h2>My Notes</h2>
+          <input id="searchInput" type="search" placeholder="Search by title or tag" />
+        </div>
+        <div id="notesList" class="notes-grid"></div>
+      </section>
+
+      <section class="panel section-panel">
+        <div class="section-header">
+          <h2>Public Notes</h2>
+        </div>
+        <div id="publicNotesList" class="notes-grid"></div>
+      </section>
+    </div>
+
+    <template id="noteCardTemplate">
+      <article class="note-card">
+        <div class="card-top">
+          <h3 class="note-title"></h3>
+          <span class="badge"></span>
+        </div>
+
+        <p class="note-content"></p>
+
+        <div class="tags"></div>
+
+        <div class="meta-row">
+          <small class="note-author"></small>
+          <small class="note-date"></small>
+        </div>
+
+        <div class="card-footer">
+          <button class="copy-btn">Copy Share Code</button>
+          <button class="delete-btn">Delete</button>
+        </div>
+      </article>
+    </template>
+
+    <script src="script.js"></script>
+  </body>
+</html>
